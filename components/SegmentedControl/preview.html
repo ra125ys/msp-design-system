@@ -1,0 +1,9 @@
+<!-- @dsCard group="Навигация" height=56 -->
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><title>SegmentedControl — превью</title>
+<style>body{margin:0;padding:12px;background:var(--surface);font-family:var(--font-sans)}.wrap{width:366px}</style></head>
+<body><div id="root" class="wrap msp"></div>
+<script>
+var M = window.MSP, h = React.createElement;
+var root=ReactDOM.createRoot(document.getElementById('root'));function App(){var s=React.useState('feed');return h(M.SegmentedControl,{label:'Режим ленты',options:[{id:'feed',label:'Лента'},{id:'clips',label:'Ролики'}],value:s[0],onChange:s[1]});}root.render(h(App));
+</script></body></html>

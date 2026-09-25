@@ -1,0 +1,9 @@
+<!-- @dsCard group="Стена" height=240 -->
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><title>GenderQuestion — превью</title>
+<style>body{margin:0;padding:12px;background:var(--surface);font-family:var(--font-sans)}.wrap{width:366px}</style></head>
+<body><div id="root" class="wrap msp"></div>
+<script>
+var M = window.MSP, h = React.createElement;
+var root=ReactDOM.createRoot(document.getElementById('root'));function App(){var s=React.useState(null),v=s[0],set=s[1];return h(M.GenderQuestion,{category:'Спорт',question:'Показать этот пост женщинам?',hint:'Спрашиваем на каждой публикации. Набор в группу — да. Семейное фото — нет.',reach:h(React.Fragment,null,'Увидят ',h('b',null,'2 300 подписчиц'),' из 7 100 — те, кто включил бизнес-публикации.'),value:v,onChange:set});}root.render(h(App));
+</script></body></html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muslim Social Platform — дизайн-система</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components/bundle.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--surface);color:var(--ink);font-family:var(--font-sans);-webkit-font-smoothing:antialiased}
+  a{color:var(--ink)}
+  .top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:16px;padding:14px 24px;background:var(--surface-bar);border-bottom:1px solid var(--line)}
+  .top h1{margin:0;font-size:16px;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+  .top nav{display:flex;gap:14px;flex-wrap:wrap;margin-left:auto}
+  .top nav a{font-size:12.5px;color:var(--muted);text-decoration:none}
+  .top nav a:hover{color:var(--ink)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px 80px}
+  section{padding:40px 0;border-top:1px solid var(--line-soft)}
+  section:first-of-type{border-top:0}
+  h2{font-size:22px;font-weight:800;letter-spacing:-.02em;margin:0 0 6px}
+  .lead{color:var(--muted);font-size:14px;margin:0 0 22px;max-width:70ch;line-height:1.5}
+  .tbl{width:100%;border-collapse:collapse;font-size:13px}
+  .tbl th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--line)}
+  .tbl td{padding:10px;border-bottom:1px solid var(--line-soft);vertical-align:middle}
+  .sw{display:inline-flex;align-items:center;gap:8px}
+  .sw i{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);display:inline-block;flex:none}
+  code{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--ink-2);background:var(--card);padding:2px 6px;border-radius:4px}
+  .usage{color:var(--ink-2);line-height:1.45}
+  .types{display:flex;flex-direction:column;gap:6px}
+  .type{display:grid;grid-template-columns:150px 1fr 260px;gap:16px;align-items:baseline;padding:12px 10px;border-bottom:1px solid var(--line-soft)}
+  .type .k{font-size:12px;color:var(--muted)}
+  .type .u{font-size:12px;color:var(--muted);line-height:1.45}
+  .icons{display:flex;flex-wrap:wrap;gap:8px}
+  .icons span{display:inline-flex;flex-direction:column;align-items:center;gap:6px;width:76px;padding:12px 0;background:var(--card);border-radius:var(--radius-md);font-size:10px;color:var(--muted)}
+  .comp{display:grid;grid-template-columns:1fr 390px;gap:28px;padding:26px 0;border-bottom:1px solid var(--line-soft);align-items:start}
+  .comp h3{margin:0 0 8px;font-size:16px;font-weight:700}
+  .comp p{margin:0 0 8px;color:var(--ink-2);font-size:13.5px;line-height:1.5}
+  .demo{background:var(--card);border-radius:var(--radius-lg);padding:14px}
+  .demo .msp{width:100%}
+  .toggle{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 12.5px var(--font-sans);cursor:pointer}
+  @media (max-width:820px){.comp{grid-template-columns:1fr}.type{grid-template-columns:1fr}.top nav{display:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1><span id="mark" style="display:inline-flex;color:var(--action)"></span>Muslim Social Platform · дизайн-система</h1>
+  <nav><a href="#colors">Цвета</a><a href="#type">Типографика</a><a href="#scales">Шкалы</a><a href="#icons">Иконки</a><a href="#components">Компоненты</a><a href="README.md">README</a></nav>
+  <button class="toggle" id="theme" type="button">Светлая тема</button>
+</header>
+<div class="wrap">
+  <section id="colors"><h2>Цвета</h2><p class="lead">Монохром на две темы. Акцентного цвета нет: главное действие — <code>action</code>, всё, что относится к стене по полу, — <code>wall</code>.</p><table class="tbl" id="colorTable"></table></section>
+  <section id="type"><h2>Типографика</h2><p class="lead">Одна семья — Manrope. Иерархию несёт вес, не размер.</p><div class="types" id="typeList"></div></section>
+  <section id="scales"><h2>Отступы, скругления, размеры</h2><div id="scales"></div></section>
+  <section id="icons"><h2>Иконки</h2><p class="lead">Свой набор, 24×24, штрих 1.6. Цвет — из <code>color</code> родителя.</p><div class="icons" id="iconGrid"></div></section>
+  <section id="components"><h2>Компоненты</h2><p class="lead"><code>window.MSP</code>, React 18. Слева правила, справа живой компонент.</p><div id="compList"></div></section>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="components/bundle.js"></script>
+<script>
+var TOKENS = {"name": "Muslim Social Platform", "version": 1, "color": {"themes": [{"id": "dark", "name": "Тёмная"}, {"id": "light", "name": "Светлая"}], "tokens": [{"name": "surface", "value": {"dark": "#121212", "light": "#ffffff"}, "usage": "Фон экрана. Первая тема — тёмная, приложение следует системной теме телефона."}, {"name": "surface-bar", "value": {"dark": "#0c0c0c", "light": "#ffffff"}, "usage": "Нижняя панель вкладок и шапка."}, {"name": "card", "value": {"dark": "#1b1b1b", "light": "#f6f6f4"}, "usage": "Карточка поста, строки настроек, вторичная кнопка."}, {"name": "elevated", "value": {"dark": "#242424", "light": "#ededea"}, "usage": "Карточка вопроса о поле, выбранный сегмент."}, {"name": "track", "value": {"dark": "#1b1b1b", "light": "#efefec"}, "usage": "Дорожка переключателя «Лента | Ролики»."}, {"name": "line", "value": {"dark": "#2c2c2c", "light": "#e2e2df"}, "usage": "Границы кнопок, чипов, пилюль действий; верхняя линия панели вкладок."}, {"name": "line-soft", "value": {"dark": "#242424", "light": "#ecece9"}, "usage": "Разделители строк внутри карточек."}, {"name": "line-strong", "value": {"dark": "#3a3a3a", "light": "#d6d6d2"}, "usage": "Рамка карточки вопроса о поле и строки с замком."}, {"name": "ink", "value": {"dark": "#ffffff", "light": "#111111"}, "usage": "Основной текст на surface, card и elevated. Контраст ≥ 15:1 в обеих темах."}, {"name": "ink-2", "value": {"dark": "#d9d9d9", "light": "#3a3a3a"}, "usage": "Подпись под фото, значения в строках. На surface и card."}, {"name": "muted", "value": {"dark": "#9c9c9c", "light": "#6e6e6e"}, "usage": "Метаданные, счётчики, подписи вкладок, подсказки. На surface и card: 7.5:1 в тёмной, 4.9:1 в светлой."}, {"name": "action", "value": {"dark": "#ffffff", "light": "#111111"}, "usage": "Главное действие: кнопка «Поделиться», «Да», «Подписаться», кнопка создания, активная вкладка. Акцентного цвета в системе нет — это и есть акцент."}, {"name": "on-action", "value": {"dark": "#111111", "light": "#ffffff"}, "usage": "Текст и иконка на заливке action."}, {"name": "action-soft", "value": {"dark": "#262626", "light": "#ededea"}, "usage": "Подложка строки с замком и метки стены."}, {"name": "wall", "value": "{action}", "usage": "Всё, что относится к стене по полу: замок, метка «Бизнес», рамка вопроса. Псевдоним action — чтобы стену можно было выделить одной правкой, если появится цвет."}, {"name": "focus-ring", "value": "{action}", "usage": "Кольцо фокуса: сплошное 2px с зазором 2px в цвете surface. ≥ 3:1 на любой поверхности в обеих темах."}, {"name": "photo-fallback", "value": {"dark": "#c9c1b4", "light": "#c9c1b4"}, "usage": "Подложка под фото, пока оно грузится."}]}, "type": {"fonts": [], "families": {"sans": "\"Manrope\", \"Helvetica Neue\", Arial, sans-serif"}, "groups": [{"name": "Заголовки", "family": "sans", "note": "Одна семья, вес несёт иерархию. Manrope с Google Fonts, полная кириллица.", "styles": [{"name": "display", "fontSize": "24px", "lineHeight": 1.15, "fontWeight": 800, "letterSpacing": "-0.02em", "sample": "Показать этот пост женщинам?", "usage": "Вопрос о поле в композере. Единственный крупный заголовок в приложении."}, {"name": "title", "fontSize": "17px", "lineHeight": "22px", "fontWeight": 600, "letterSpacing": "-0.01em", "sample": "Новая публикация", "usage": "Заголовок экрана в шапке."}, {"name": "name", "fontSize": "16px", "lineHeight": "20px", "fontWeight": 600, "letterSpacing": "-0.01em", "sample": "Клуб дзюдо «Гартал»", "usage": "Имя на профиле."}, {"name": "stat", "fontSize": "22px", "lineHeight": "26px", "fontWeight": 700, "letterSpacing": "-0.02em", "sample": "9 400", "usage": "Числа на профиле. Табличные цифры."}]}, {"name": "Текст", "family": "sans", "styles": [{"name": "body", "fontSize": "15px", "lineHeight": 1.45, "fontWeight": 400, "sample": "Открыт набор в младшую группу. Вторник и четверг в 17:00.", "usage": "Подпись в композере, строки настроек."}, {"name": "caption", "fontSize": "14px", "lineHeight": 1.5, "fontWeight": 400, "sample": "Свет в семь утра на Кичик Гала.", "usage": "Подпись под фото. Без ника впереди — ник уже в шапке поста."}, {"name": "label", "fontSize": "13px", "lineHeight": "18px", "fontWeight": 700, "sample": "Нравится 248", "usage": "Текст в пилюлях действий, малые кнопки, счётчики."}, {"name": "meta", "fontSize": "12px", "lineHeight": "16px", "fontWeight": 400, "sample": "Кичик Гала, 14 · 5 ч", "usage": "Место и время под ником, значения в строках."}, {"name": "note", "fontSize": "12px", "lineHeight": 1.4, "fontWeight": 600, "sample": "Здесь только публикации, помеченные для показа", "usage": "Строка с замком и строка охвата."}]}, {"name": "Мелкое", "family": "sans", "styles": [{"name": "eyebrow", "fontSize": "11px", "lineHeight": "14px", "fontWeight": 700, "letterSpacing": "0.08em", "sample": "БИЗНЕС · СПОРТ", "usage": "Метка бизнеса и подписи разделов, всегда капителью."}, {"name": "tab", "fontSize": "10px", "lineHeight": "12px", "fontWeight": 500, "letterSpacing": "0.01em", "sample": "Входящие", "usage": "Подписи вкладок; активная — вес 600."}]}]}, "spacing": {"tokens": [{"name": "space-1", "value": "4px", "usage": "Зазор между иконкой и цифрой, между чипами."}, {"name": "space-2", "value": "8px", "usage": "Промежуток между кнопками в ряду, между пилюлями действий."}, {"name": "space-3", "value": "12px", "usage": "Внутренний отступ карточки, поля фото внутри карточки, боковые поля карточек."}, {"name": "space-4", "value": "16px", "usage": "Боковые поля экрана и текста. Основной шаг."}, {"name": "space-5", "value": "20px", "usage": "Между блоками профиля."}, {"name": "space-6", "value": "24px", "usage": "Крупные промежутки между секциями."}, {"name": "space-8", "value": "32px", "usage": "Резерв для пустых состояний."}]}, "radius": {"tokens": [{"name": "radius-xs", "value": "6px", "usage": "Метка «Бизнес»."}, {"name": "radius-sm", "value": "12px", "usage": "Кнопки, строки в композере, строка с замком."}, {"name": "radius-md", "value": "16px", "usage": "Фото внутри карточки, плитки сетки профиля, поле подписи."}, {"name": "radius-lg", "value": "22px", "usage": "Карточка поста, карточка вопроса о поле."}, {"name": "radius-pill", "value": "999px", "usage": "Чипы, пилюли действий, переключатель «Лента | Ролики», бейдж."}, {"name": "radius-device", "value": "44px", "usage": "Только для макетов: скругление рамки телефона."}]}, "size": {"note": "Высоты и размеры элементов. Минимальная цель касания 44.", "tokens": [{"name": "header", "value": "56px", "usage": "Высота шапки экрана."}, {"name": "tabbar", "value": "58px", "usage": "Высота панели вкладок без безопасной зоны."}, {"name": "control-lg", "value": "48px", "usage": "Кнопки «Да» и «Нет» в вопросе о поле."}, {"name": "control-md", "value": "42px", "usage": "«Подписаться», «Написать», строки настроек (46)."}, {"name": "control-sm", "value": "36px", "usage": "«Поделиться» в шапке."}, {"name": "pill", "value": "34px", "usage": "Пилюли действий под постом."}, {"name": "create", "value": "50px", "usage": "Круглая кнопка создания в панели вкладок."}, {"name": "avatar-sm", "value": "38px", "usage": "Аватар в шапке поста."}, {"name": "avatar-lg", "value": "80px", "usage": "Аватар на профиле."}, {"name": "icon", "value": "24px", "usage": "Иконки в шапке, панели и строках."}, {"name": "touch", "value": "44px", "usage": "Минимальная цель касания для иконок-кнопок."}]}};
+var READMES = {"Mark": "Знак — круг, разделённый пополам: две половины и стена. Красить в `action`, ставить в шапку ленты без словесного знака — названия у продукта пока нет.", "Icon": "Свой набор контурных иконок 24×24, штрих 1.6. Цвет берётся из `color` родителя — красьте иконку через текстовый цвет, а не через проп.\n\nЧто не делать: собирать под постом ряд сердце-пузырь-самолётик — это узнаваемая строка Instagram. Действия под постом — текстовые пилюли.", "Button": "Главное действие — `primary`: заливка `action`, текст `on-action`. Одно на экран. `secondary` на `card` с рамкой `line` — парное действие рядом с главным. `ghost` без заливки — «Нет» в вопросе о поле.\n\nРазмеры: `lg` 48 для «Да»/«Нет», `md` 42 для профиля, `sm` 36 пилюлей для шапки. Текст кнопки — глагол: «Поделиться», не «Готово».", "IconButton": "Иконка-кнопка 44×44 — минимальная цель касания. `label` обязателен: это единственное, что прочитает экранный диктор. Бейдж — белая пилюля с тёмной цифрой, не красная.", "Chip": "Аудитория публикации. Выбранный чип — заливка `action` с галочкой. «Близкие друзья» и вопрос о поле взаимно исключают друг друга: выбран узкий круг — вопрос не показывается.", "SegmentedControl": "Переключатель режима ленты в шапке: «Лента | Ролики». Короткое видео — режим, а не вкладка. Слово Reels в интерфейсе не встречается.", "TabBar": "Четыре вкладки и круглая кнопка создания посередине — не пять вкладок. Лента, Поиск, Входящие, Профиль. Состояние держит экран. Активная вкладка — цвет `action`, штрих 1.9.", "ListRow": "Строка настройки или композера: иконка, подпись `body`, значение `meta` серым, шеврон. Складываются в `ListRows` на `card` с разделителями `line-soft`. Вся строка — одна кнопка.", "ProfileStats": "Числа профиля `stat` с табличными цифрами. У бизнес-профиля глазами другого пола — два числа, без «подписок», и «публикаций» считает только видимые этому зрителю.", "BusinessBadge": "Метка бизнес-аккаунта: контурная, `radius-xs`, капитель. Стоит под ником в шапке поста и рядом с именем на профиле. Пять категорий на запуске: обучение, здоровье, еда, ручная работа, спорт.", "WallNote": "Строка с замком объясняет правило стены там, где оно действует. С подложкой `action-soft` и рамкой `line-strong` — на профиле. `bare` — под шапкой кросс-гендерного поста в ленте. Одна строка, без точки, всегда в цвете `wall`.", "GenderQuestion": "Сердце продукта. Появляется в композере только у бизнес-аккаунта. Управляемый: `value` начинается с `null` — молчаливого умолчания нет, автор обязан ответить. `reach` — честная цифра: скольким подписчикам другого пола пост дойдёт и сколько их всего. Вопрос формулируется под пол автора: мужчине — «женщинам», женщине — «мужчинам».", "PostActions": "Действия под постом — текстовые пилюли, а не ряд иконок. Порядок: Нравится · Ответить · Отправить, «Сохранить» прижато вправо. Счётчик серым табличными цифрами. Стоит под подписью, не над ней.", "PostCard": "Карточка поста на `card` с `radius-lg`: шапка, фото со скруглением `radius-md` внутри, подпись без ника, действия текстом. Кросс-гендерный бизнес-пост получает `business` и `wallText`. Фото — потребитель даёт `photoStyle` с фоном или узел в `photo`."};
+var M = window.MSP, h = React.createElement;
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme');
+  try{ var s=localStorage.getItem('msp-theme'); if(s) root.setAttribute('data-theme',s); }catch(e){}
+  function label(){ btn.textContent = root.getAttribute('data-theme')==='dark' ? 'Светлая тема' : 'Тёмная тема'; }
+  btn.addEventListener('click',function(){ var n=root.getAttribute('data-theme')==='dark'?'light':'dark'; root.setAttribute('data-theme',n); try{localStorage.setItem('msp-theme',n);}catch(e){} label(); });
+  label();
+})();
+ReactDOM.createRoot(document.getElementById('mark')).render(h(M.Mark,{size:22}));
+(function colors(){
+  var th=TOKENS.color.themes, first=th[0].id, rows='<tr><th>Токен</th>'+th.map(function(t){return '<th>'+t.name+'</th>';}).join('')+'<th>Где</th></tr>';
+  TOKENS.color.tokens.forEach(function(t){
+    rows+='<tr><td><code>'+t.name+'</code></td>'+th.map(function(x){ var v=typeof t.value==='string'?t.value:(t.value[x.id]||t.value[first]); var isAlias=/^\{/.test(v); var css=isAlias?'var(--'+v.slice(1,-1)+')':v;
+      return '<td><span class="sw"><i style="background:'+css+'"></i><span>'+(isAlias?'→ '+v.slice(1,-1):v)+'</span></span></td>'; }).join('')+'<td class="usage">'+t.usage+'</td></tr>';
+  });
+  document.getElementById('colorTable').innerHTML=rows;
+})();
+(function types(){
+  var el=document.getElementById('typeList'), out='';
+  TOKENS.type.groups.forEach(function(g){ g.styles.forEach(function(s){
+    out+='<div class="type"><div class="k"><code>'+s.name+'</code><br>'+s.fontSize+' / '+s.fontWeight+(s.letterSpacing?' / '+s.letterSpacing:'')+'</div><div class="'+s.name+'">'+(s.sample||s.name)+'</div><div class="u">'+(s.usage||'')+'</div></div>';
+  });});
+  el.innerHTML=out;
+})();
+(function scales(){
+  var out='';
+  ['spacing','radius','size'].forEach(function(f){ var fam=TOKENS[f]; if(!fam) return;
+    out+='<h3 style="font-size:14px;margin:18px 0 6px">'+({spacing:'Отступы',radius:'Скругления',size:'Размеры'})[f]+'</h3><table class="tbl">';
+    fam.tokens.forEach(function(t){ var demo = f==='radius' ? '<i style="display:inline-block;width:40px;height:28px;border:1px solid var(--line);background:var(--card);border-radius:'+t.value+'"></i>' : '<i style="display:inline-block;height:10px;background:var(--action);width:'+t.value+';max-width:200px"></i>';
+      out+='<tr><td style="width:150px"><code>'+t.name+'</code></td><td style="width:90px">'+t.value+'</td><td style="width:220px">'+demo+'</td><td class="usage">'+(t.usage||'')+'</td></tr>'; });
+    out+='</table>';
+  });
+  document.getElementById('scales').innerHTML=out;
+})();
+ReactDOM.createRoot(document.getElementById('iconGrid')).render(h(React.Fragment,null,M.icons.map(function(n){return h('span',{key:n},h(M.Icon,{name:n,size:24}),n);})));
+var PH='linear-gradient(160deg,#E4D4B6 0%,#C4A176 42%,#79593C 100%)', MAT='linear-gradient(135deg,#F2EDE4 0%,#D9D2C5 52%,#A29989 100%)';
+function Stateful(init, render){ return function(){ var s=React.useState(init); return render(s[0],s[1]); }; }
+var DEMOS={
+  Mark:function(){return h('div',{style:{display:'flex',gap:24,alignItems:'center',color:'var(--action)'}},h(M.Mark,{size:28}),h(M.Mark,{size:44}),h(M.Mark,{size:72}));},
+  Icon:function(){return h('div',{style:{display:'flex',flexWrap:'wrap',gap:10,color:'var(--ink)'}},M.icons.map(function(n){return h(M.Icon,{key:n,name:n,size:24});}));},
+  Button:function(){return h('div',{style:{display:'flex',flexDirection:'column',gap:10}},h('div',{style:{display:'flex',gap:8}},h(M.Button,{size:'lg',full:true},'Да'),h(M.Button,{size:'lg',variant:'ghost',full:true},'Нет')),h('div',{style:{display:'flex',gap:8}},h(M.Button,{full:true},'Подписаться'),h(M.Button,{variant:'secondary',full:true},'Написать')),h('div',null,h(M.Button,{size:'sm'},'Поделиться')));},
+  IconButton:function(){return h('div',{style:{display:'flex',gap:4}},h(M.IconButton,{icon:'bell',label:'Уведомления',badge:3}),h(M.IconButton,{icon:'mail',label:'Входящие'}),h(M.IconButton,{icon:'back',label:'Назад'}),h(M.IconButton,{icon:'close',label:'Закрыть'}),h(M.IconButton,{icon:'dots',label:'Ещё'}));},
+  Chip:Stateful('f',function(v,set){return h('div',{style:{display:'flex',gap:8}},h(M.Chip,{selected:v==='f',onClick:function(){set('f');}},'Подписчики'),h(M.Chip,{selected:v==='c',onClick:function(){set('c');}},'Близкие друзья'));}),
+  SegmentedControl:Stateful('feed',function(v,set){return h(M.SegmentedControl,{label:'Режим ленты',options:[{id:'feed',label:'Лента'},{id:'clips',label:'Ролики'}],value:v,onChange:set});}),
+  TabBar:Stateful('feed',function(v,set){return h(M.TabBar,{active:v,onChange:set});}),
+  ListRow:function(){return h(M.ListRows,null,h(M.ListRow,{icon:'tag',label:'Отметить людей',value:'Никого'}),h(M.ListRow,{icon:'pin',label:'Место',value:'Баку'}),h(M.ListRow,{icon:'music',label:'Музыка',value:'Не выбрана'}));},
+  ProfileStats:function(){return h(M.ProfileStats,{items:[{value:'12',label:'публикаций'},{value:'9 400',label:'подписчиков'}]});},
+  BusinessBadge:function(){return h('div',{style:{display:'flex',gap:8}},h(M.BusinessBadge,{category:'Спорт'}),h(M.BusinessBadge,{category:'Здоровье'}),h(M.BusinessBadge,{category:'Еда'}));},
+  WallNote:function(){return h('div',{style:{display:'flex',flexDirection:'column',gap:10}},h(M.WallNote,null,'Здесь только публикации, помеченные для показа'),h(M.WallNote,{bare:true},'Показано вам — вы включили бизнес-публикации'));},
+  GenderQuestion:Stateful(null,function(v,set){return h(M.GenderQuestion,{category:'Спорт',question:'Показать этот пост женщинам?',hint:'Спрашиваем на каждой публикации. Набор в группу — да. Семейное фото — нет.',reach:h(React.Fragment,null,'Увидят ',h('b',null,'2 300 подписчиц'),' из 7 100 — те, кто включил бизнес-публикации.'),value:v,onChange:set});}),
+  PostActions:function(){return h(M.PostActions,{likes:248,replies:19});},
+  PostCard:function(){return h(M.PostCard,{handle:'gartal.judo',meta:'Кичик Гала, 14 · 5 ч',business:'Спорт',wallText:'Показано вам — вы включили бизнес-публикации',photo:true,photoStyle:{backgroundImage:MAT},avatarStyle:{backgroundImage:PH},caption:'Открыт набор в младшую группу. Вторник и четверг в 17:00.',tags:'#дзюдо #баку',likes:248,replies:19});}
+};
+(function comps(){
+  var list=document.getElementById('compList');
+  Object.keys(DEMOS).forEach(function(n){
+    var row=document.createElement('div'); row.className='comp'; row.id='c-'+n;
+    var txt=document.createElement('div'); txt.innerHTML='<h3>'+n+'</h3>'+(READMES[n]||'').split(/\n\n+/).map(function(p){return '<p>'+p.replace(/`([^`]+)`/g,'<code>$1</code>')+'</p>';}).join('');
+    var demo=document.createElement('div'); demo.className='demo'; var mount=document.createElement('div'); mount.className='msp'; demo.appendChild(mount);
+    row.appendChild(txt); row.appendChild(demo); list.appendChild(row);
+    ReactDOM.createRoot(mount).render(h(DEMOS[n]));
+  });
+})();
+</script>
+</body>
+</html>

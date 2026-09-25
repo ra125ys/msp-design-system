@@ -1,0 +1,62 @@
+/* Muslim Social Platform — компоненты. Все цвета из tokens.css. */
+.msp{font-family:var(--font-sans);color:var(--ink)}
+.msp-icon{display:inline-block;vertical-align:middle;flex:none}
+.msp-mark{display:inline-block;vertical-align:middle}
+.msp-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;box-sizing:border-box;border:1.5px solid transparent;border-radius:var(--radius-sm);font-family:var(--font-sans);font-weight:700;cursor:pointer;line-height:1;white-space:nowrap}
+.msp-btn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+.msp-btn--primary{background:var(--action);color:var(--on-action);border-color:var(--action)}
+.msp-btn--secondary{background:var(--card);color:var(--ink);border-color:var(--line)}
+.msp-btn--ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.msp-btn--lg{height:48px;padding:0 18px;font-size:15px;font-weight:800}
+.msp-btn--md{height:42px;padding:0 16px;font-size:14px}
+.msp-btn--sm{height:36px;padding:0 16px;font-size:14px;border-radius:var(--radius-pill)}
+.msp-btn--full{width:100%}
+.msp-iconbtn{position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;background:transparent;border:0;padding:0;color:var(--ink);cursor:pointer;border-radius:var(--radius-sm)}
+.msp-iconbtn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+.msp-badge{position:absolute;top:6px;right:4px;min-width:17px;height:17px;border-radius:9px;background:var(--ink);color:var(--on-action);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 5px;box-shadow:0 0 0 2px var(--surface)}
+.msp-chip{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;border-radius:var(--radius-pill);padding:6px 12px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);cursor:pointer;font-family:var(--font-sans)}
+.msp-chip--selected{background:var(--action);color:var(--on-action);border-color:var(--action)}
+.msp-bizbadge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;letter-spacing:.02em;color:var(--ink);border:1px solid var(--line);border-radius:var(--radius-xs);padding:2px 8px;background:transparent}
+.msp-wallnote{display:flex;align-items:center;gap:8px;background:var(--action-soft);border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:10px 12px;color:var(--wall);font-size:12px;font-weight:600;line-height:1.35}
+.msp-wallnote--bare{background:transparent;border:0;padding:0 16px 10px;font-size:11.5px}
+.msp-gq{background:var(--elevated);border:1px solid var(--line-strong);border-radius:var(--radius-lg);box-sizing:border-box;padding:16px 18px}
+.msp-gq__eyebrow{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--wall)}
+.msp-gq__q{font-size:24px;font-weight:800;line-height:1.15;letter-spacing:-.02em;color:var(--ink);margin-top:8px}
+.msp-gq__hint{font-size:13px;line-height:1.4;color:var(--ink-2);margin-top:6px}
+.msp-gq__row{display:flex;gap:8px;margin-top:14px}
+.msp-gq__row .msp-btn{flex:1}
+.msp-gq__reach{font-size:12px;line-height:1.4;color:var(--wall);margin-top:12px}
+.msp-gq__reach b{font-weight:700}
+.msp-actions{display:flex;align-items:center;gap:8px}
+.msp-pill{height:34px;display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--line);border-radius:var(--radius-pill);padding:0 12px;color:var(--ink);font-size:12.5px;font-weight:700;cursor:pointer;font-family:var(--font-sans)}
+.msp-pill__n{color:var(--muted);font-weight:600;font-variant-numeric:tabular-nums}
+.msp-pill--right{margin-left:auto}
+.msp-seg{display:inline-flex;background:var(--track);border-radius:var(--radius-pill);padding:3px;gap:2px}
+.msp-seg__opt{padding:6px 14px;border-radius:var(--radius-pill);font-size:13px;font-weight:600;color:var(--muted);background:transparent;border:0;cursor:pointer;font-family:var(--font-sans)}
+.msp-seg__opt--on{background:var(--elevated);color:var(--ink);font-weight:700}
+.msp-tabbar{display:flex;align-items:stretch;background:var(--surface-bar);border-top:1px solid var(--line);padding-bottom:6px}
+.msp-tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:transparent;border:0;padding:10px 0 6px;min-height:58px;color:var(--ink-2);cursor:pointer;font-family:var(--font-sans)}
+.msp-tab--on{color:var(--action)}
+.msp-tab__label{font-size:10px;font-weight:500;letter-spacing:.01em;color:var(--muted)}
+.msp-tab--on .msp-tab__label{font-weight:600;color:var(--action)}
+.msp-tab--create{align-items:flex-start;padding:4px 0 0}
+.msp-tab__create{width:50px;height:50px;border-radius:50%;background:var(--action);color:var(--on-action);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.msp-row{display:flex;align-items:center;gap:12px;width:100%;min-height:46px;background:transparent;border:0;border-bottom:1px solid var(--line-soft);padding:0;text-align:left;color:var(--ink);cursor:pointer;font-family:var(--font-sans)}
+.msp-row:last-child{border-bottom:0}
+.msp-row__label{flex:1;font-size:15px}
+.msp-row__value{font-size:14px;color:var(--muted)}
+.msp-rows{background:var(--card);border-radius:var(--radius-md);padding:0 14px}
+.msp-stats{display:flex}
+.msp-stat{flex:1;display:flex;flex-direction:column;align-items:center}
+.msp-stat__n{font-size:22px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.msp-stat__l{font-size:11.5px;color:var(--muted);margin-top:1px}
+.msp-post{background:var(--card);border-radius:var(--radius-lg);overflow:hidden;padding-bottom:2px}
+.msp-post__head{display:flex;gap:10px;align-items:center;padding:10px 8px 8px 16px}
+.msp-avatar{flex:none;border-radius:50%;background:var(--photo-fallback);background-size:cover;background-position:center}
+.msp-post__who{flex:1;min-width:0}
+.msp-post__handle{font-size:14px;font-weight:600;letter-spacing:-.005em}
+.msp-post__meta{font-size:12px;color:var(--muted);margin-top:1px}
+.msp-post__photo{margin:0 12px;height:300px;border-radius:var(--radius-md);background:var(--photo-fallback);background-size:cover;background-position:center}
+.msp-post__cap{padding:12px 16px 8px;font-size:14.5px;line-height:1.5;color:var(--ink)}
+.msp-post__tags{font-size:13px;color:var(--muted);margin-top:6px;font-weight:500}
+.msp-post .msp-actions{padding:2px 16px 14px}

@@ -1,0 +1,77 @@
+/* Muslim Social Platform — скомпилировано из tokens.json */
+:root, [data-theme="dark"] {
+  --surface: #121212;
+  --surface-bar: #0c0c0c;
+  --card: #1b1b1b;
+  --elevated: #242424;
+  --track: #1b1b1b;
+  --line: #2c2c2c;
+  --line-soft: #242424;
+  --line-strong: #3a3a3a;
+  --ink: #ffffff;
+  --ink-2: #d9d9d9;
+  --muted: #9c9c9c;
+  --action: #ffffff;
+  --on-action: #111111;
+  --action-soft: #262626;
+  --wall: var(--action);
+  --focus-ring: var(--action);
+  --photo-fallback: #c9c1b4;
+}
+[data-theme="light"] {
+  --surface: #ffffff;
+  --surface-bar: #ffffff;
+  --card: #f6f6f4;
+  --elevated: #ededea;
+  --track: #efefec;
+  --line: #e2e2df;
+  --line-soft: #ecece9;
+  --line-strong: #d6d6d2;
+  --ink: #111111;
+  --ink-2: #3a3a3a;
+  --muted: #6e6e6e;
+  --action: #111111;
+  --on-action: #ffffff;
+  --action-soft: #ededea;
+  --wall: var(--action);
+  --focus-ring: var(--action);
+  --photo-fallback: #c9c1b4;
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --radius-xs: 6px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --radius-device: 44px;
+  --header: 56px;
+  --tabbar: 58px;
+  --control-lg: 48px;
+  --control-md: 42px;
+  --control-sm: 36px;
+  --pill: 34px;
+  --create: 50px;
+  --avatar-sm: 38px;
+  --avatar-lg: 80px;
+  --icon: 24px;
+  --touch: 44px;
+  --font-sans: "Manrope", "Helvetica Neue", Arial, sans-serif;
+}
+.display { font-family: var(--font-sans); font-size: 24px; line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; }
+.title { font-family: var(--font-sans); font-size: 17px; line-height: 22px; font-weight: 600; letter-spacing: -0.01em; }
+.name { font-family: var(--font-sans); font-size: 16px; line-height: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.stat { font-family: var(--font-sans); font-size: 22px; line-height: 26px; font-weight: 700; letter-spacing: -0.02em; }
+.body { font-family: var(--font-sans); font-size: 15px; line-height: 1.45; font-weight: 400; }
+.caption { font-family: var(--font-sans); font-size: 14px; line-height: 1.5; font-weight: 400; }
+.label { font-family: var(--font-sans); font-size: 13px; line-height: 18px; font-weight: 700; }
+.meta { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 400; }
+.note { font-family: var(--font-sans); font-size: 12px; line-height: 1.4; font-weight: 600; }
+.eyebrow { font-family: var(--font-sans); font-size: 11px; line-height: 14px; font-weight: 700; letter-spacing: 0.08em; }
+.tab { font-family: var(--font-sans); font-size: 10px; line-height: 12px; font-weight: 500; letter-spacing: 0.01em; }

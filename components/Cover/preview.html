@@ -1,0 +1,53 @@
+<!-- @dsCard height=300 -->
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Muslim Social Platform</title>
+<style>
+  html, body { margin:0; height:100%; }
+  body { background:var(--surface); color:var(--ink); font-family:var(--font-sans); overflow:hidden; }
+  .cover { position:relative; height:300px; overflow:hidden; }
+  .band { position:absolute; top:0; left:0; width:960px; height:112px; overflow:hidden; }
+  .band svg { display:block; width:960px; height:112px; }
+  .act { fill:var(--action); }
+  .elev { fill:var(--elevated); }
+  .card { fill:var(--card); }
+  .line { fill:var(--line-strong); }
+  .blk { rx:var(--radius-sm); }
+  .words { position:absolute; left:var(--space-6); right:var(--space-6); bottom:var(--space-6); }
+  .name { margin:0; font-size:60px; line-height:.95; font-weight:800; letter-spacing:-.03em; color:var(--ink); white-space:nowrap; }
+  .tag { margin:var(--space-2) 0 0 2px; font-size:14px; line-height:20px; color:var(--muted); max-width:440px; }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="band" aria-hidden="true">
+<svg viewBox="0 0 960 112" width="960" height="112">
+<!--
+  blocks      action 448×96 (левая половина — то, что видно) · card 448×96 (правая половина — то, что за стеной) · elevated 96×96 у самой стены · line-strong 4×112 — сама стена; вместе ≈ треть обложки 960×300
+  arrangement полоса во всю ширину сверху: два равных поля, разрезанных одной вертикальной линией по центру — скелет «полоса», потому что имя шире 440 на 64px
+  pattern     половинки дисков из знака (круг, разрезанный пополам): на левом поле залитые половины card, на правом — контурные половины action; шаг space-6 × 4, «две половины и стена между ними»
+  scales      стороны кратны space-2, поля 448 = 28×16, диски 32 = space-8, шаг 96, зазор до имени space-6, углы radius-sm, стена 4 = space-1
+-->
+<rect class="act blk" x="0" y="-12" width="448" height="108" rx="12"/>
+<rect class="card blk" x="512" y="-12" width="448" height="108" rx="12"/>
+<rect class="elev blk" x="464" y="8" width="32" height="88" rx="12"/>
+<rect class="line" x="478" y="0" width="4" height="112"/>
+<path class="card" d="M96 48a16 16 0 0 0 0 32z" transform="translate(0,-8)"/>
+<path class="card" d="M192 48a16 16 0 0 0 0 32z" transform="translate(0,-8)"/>
+<path class="card" d="M288 48a16 16 0 0 0 0 32z" transform="translate(0,-8)"/>
+<path class="card" d="M384 48a16 16 0 0 0 0 32z" transform="translate(0,-8)"/>
+<path class="act" d="M576 40a16 16 0 0 1 0 32" fill="none" stroke="var(--action)" stroke-width="2" style="fill:none"/>
+<path class="act" d="M672 40a16 16 0 0 1 0 32" style="fill:none;stroke:var(--action);stroke-width:2"/>
+<path class="act" d="M768 40a16 16 0 0 1 0 32" style="fill:none;stroke:var(--action);stroke-width:2"/>
+<path class="act" d="M864 40a16 16 0 0 1 0 32" style="fill:none;stroke:var(--action);stroke-width:2"/>
+</svg>
+</div>
+<div class="words">
+  <h1 class="name">Muslim Social Platform</h1>
+  <p class="tag">Фотосеть, где личное не пересекает пол — и одна дверь для бизнеса.</p>
+</div>
+</div>
+</body>
+</html>
