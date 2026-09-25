@@ -1,3 +1,3 @@
 # Chip
 
-Аудитория публикации. Выбранный чип — заливка `action` с галочкой. «Близкие друзья» и вопрос о поле взаимно исключают друг друга: выбран узкий круг — вопрос не показывается.
+Post audience. The selected chip is an `action` fill with a check. Close friends and the gender question are mutually exclusive: with the narrow circle chosen, the question is not shown.

@@ -1,5 +1,5 @@
 # Button
 
-Главное действие — `primary`: заливка `action`, текст `on-action`. Одно на экран. `secondary` на `card` с рамкой `line` — парное действие рядом с главным. `ghost` без заливки — «Нет» в вопросе о поле.
+The primary action is `primary`: `action` fill, `on-action` text. One per screen. `secondary` sits on `card` with a `line` border — the paired action next to the primary. `ghost` has no fill — the No in the gender question.
 
-Размеры: `lg` 48 для «Да»/«Нет», `md` 42 для профиля, `sm` 36 пилюлей для шапки. Текст кнопки — глагол: «Поделиться», не «Готово».
+Sizes: `lg` 48 for Yes/No, `md` 42 on the profile, `sm` 36 pill in the header. Button text is a verb: "Share", not "Done".

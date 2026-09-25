@@ -1,3 +1,3 @@
 # PostActions
 
-Действия под постом — текстовые пилюли, а не ряд иконок. Порядок: Нравится · Ответить · Отправить, «Сохранить» прижато вправо. Счётчик серым табличными цифрами. Стоит под подписью, не над ней.
+Post actions are text pills, not a row of icons. Order: Like · Reply · Send, with Save pinned right. Counts in muted tabular figures. Sits under the caption, not above it.

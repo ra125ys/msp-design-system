@@ -1,1 +1,1 @@
-Знак — круг, разделённый пополам, левая половина залита. Две половины и стена между ними. В файле краска #808080; в приложении знак рисуется компонентом `Mark` цветом `action`. Названия у продукта пока нет — словесного знака нет намеренно. Не добавлять камеру, градиент или полумесяц.
+The mark — a circle split in half, left half filled. Two halves and the wall between them. The file is inked #808080; in the app the mark is drawn by the `Mark` component in `action`. The product has no name yet — there is no wordmark on purpose. Do not add a camera, a gradient or a crescent.

@@ -1,3 +1,3 @@
 # Mark
 
-Знак — круг, разделённый пополам: две половины и стена. Красить в `action`, ставить в шапку ленты без словесного знака — названия у продукта пока нет.
+The mark is a circle split in half: two halves and the wall. Paint it in `action` and put it in the feed header without a wordmark — the product has no name yet.

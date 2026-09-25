@@ -1,1 +1,1 @@
-Свой набор из 19 контурных иконок, 24×24, штрих 1.6, скруглённые концы. В файлах краска #808080 — читается на обеих темах. В приложении использовать компонент `Icon`, он берёт цвет из `color`. Никаких иконок Instagram: сердце, пузырь и самолётик в ряд не использовать.
+Our own set of 19 outline icons, 24×24, 1.6 stroke, round caps. The files are inked #808080 so they read on both themes. In the app use the `Icon` component, which takes its colour from `color`. No Instagram icons: never a heart, bubble and paper plane in a row.

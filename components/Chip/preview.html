@@ -1,9 +1,9 @@
-<!-- @dsCard group="Выбор" height=64 -->
+<!-- @dsCard group="Selection" height=64 -->
 <!doctype html>
-<html lang="ru"><head><meta charset="utf-8"><title>Chip — превью</title>
+<html lang="en"><head><meta charset="utf-8"><title>Chip — preview</title>
 <style>body{margin:0;padding:12px;background:var(--surface);font-family:var(--font-sans)}.wrap{width:366px}</style></head>
 <body><div id="root" class="wrap msp"></div>
 <script>
 var M = window.MSP, h = React.createElement;
-ReactDOM.createRoot(document.getElementById('root')).render(h('div',{style:{display:'flex',gap:8}},h(M.Chip,{selected:true},'Подписчики'),h(M.Chip,null,'Близкие друзья')));
+ReactDOM.createRoot(document.getElementById('root')).render(h('div',{style:{display:'flex',gap:8}},h(M.Chip,{selected:true},'Followers'),h(M.Chip,null,'Close friends')));
 </script></body></html>

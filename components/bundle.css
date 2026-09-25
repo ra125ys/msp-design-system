@@ -1,4 +1,4 @@
-/* Muslim Social Platform — компоненты. Все цвета из tokens.css. */
+/* Muslim Social Platform — components. Every colour comes from tokens.css. */
 .msp{font-family:var(--font-sans);color:var(--ink)}
 .msp-icon{display:inline-block;vertical-align:middle;flex:none}
 .msp-mark{display:inline-block;vertical-align:middle}

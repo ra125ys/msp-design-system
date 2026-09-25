@@ -1,21 +1,21 @@
-# Muslim Social Platform — дизайн-система
+# Muslim Social Platform — Design System
 
-Токены, типографика, иконки и компоненты фотосети с разделением по полу. Две темы, монохром, Manrope.
+Tokens, typography, icons and components for a photo network where personal accounts never cross the gender line. Two themes, monochrome, Manrope.
 
-**Галерея:** откройте `index.html` (или страницу GitHub Pages этого репозитория) — там все токены обеих тем, шкала стилей, иконки и живые компоненты.
+**Gallery:** open `index.html` or the [GitHub Pages site](https://ra125ys.github.io/msp-design-system/) — every token in both themes, the type scale, the icons and live components.
 
-## Подключение
+## Getting started
 
-**Только стили и токены** — достаточно для Flutter, нативных приложений и вёрстки:
+**Styles and tokens only** — enough for Flutter, native apps and plain markup:
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="tokens.css">
 ```
 
-Переменные: `--surface`, `--card`, `--ink`, `--muted`, `--action`, `--on-action`, `--wall`, `--radius-lg`, `--space-4` и остальные из `tokens.json`. Тема переключается атрибутом `data-theme="dark" | "light"` на `<html>`; по умолчанию тёмная.
+Variables: `--surface`, `--card`, `--ink`, `--muted`, `--action`, `--on-action`, `--wall`, `--radius-lg`, `--space-4` and the rest of `tokens.json`. Switch themes with `data-theme="dark" | "light"` on `<html>`; dark is the default.
 
-**Компоненты (веб, React 18):**
+**Components (web, React 18):**
 
 ```html
 <link rel="stylesheet" href="components/bundle.css">
@@ -27,66 +27,68 @@
 </script>
 ```
 
-Типы и список пропсов — `components/index.d.ts`; правила по каждому компоненту — `components/<Имя>/README.md`.
+Types and props — `components/index.d.ts`; guidelines per component — `components/<Name>/README.md`. All labels default to English and take a `labels` override for localisation.
 
-**Flutter:** переносите `tokens.json` в `ThemeData` — цвета по темам, стили текста, отступы и радиусы. Бандл на React для мобильного приложения не нужен.
+**Flutter:** map `tokens.json` onto `ThemeData` — colours per theme, text styles, spacing and radii. The React bundle is not needed for the mobile app.
 
-## Структура
+## Layout
 
 ```
-tokens.json          токены: цвета × 2 темы, шрифты, отступы, радиусы, размеры
-tokens.css           то же, скомпилировано в CSS-переменные и классы стилей
-components/          bundle.js (window.MSP), bundle.css, index.d.ts, README и превью по компонентам
-assets/Icons/        19 контурных иконок 24×24, штрих 1.6
-assets/Logos/        знак — круг, разделённый пополам
-index.html           галерея
+tokens.json          tokens: colours × 2 themes, fonts, spacing, radii, sizes
+tokens.css           the same, compiled to CSS variables and style classes
+components/          bundle.js (window.MSP), bundle.css, index.d.ts, README and preview per component
+assets/Icons/        19 outline icons, 24×24, 1.6 stroke
+assets/Logos/        the mark — a circle split in half
+index.html           gallery
 ```
 
 ---
 
-Фотосеть для мусульман. Одно правило держит весь продукт: **личные аккаунты не пересекают пол**, и единственная дверь — бизнес-аккаунт, который на каждой публикации отвечает, показывать ли её другому полу. Интерфейс обязан делать это правило видимым и при этом ни разу не выглядеть как Instagram.
+## The one rule
 
-## Голос
+One rule holds the whole product: **personal accounts never cross the gender line**. The only door is a business account, which answers on every post whether to show it to the other gender. The interface has to make that rule visible — and must never look like Instagram.
 
-- Пишите коротко и на «вы». Никаких восклицаний, эмодзи и слов «халяльный», «благочестивый», «сестра», «брат» в интерфейсе.
-- Каждое правило стены объясняется одной строкой рядом с местом, где оно действует: «Показано вам — вы включили бизнес-публикации», «Здесь только публикации, помеченные для показа». Не в справке, а на экране.
-- Вопрос о поле задаётся как вопрос: «Показать этот пост женщинам?» — с кнопками «Да» и «Нет», без умолчания.
-- Числа честные и рядом с действием: «Увидят 2 300 подписчиц из 7 100».
-- Никогда не говорите пользователю, что от него что-то скрыто. Нет счётчиков «скрыто», нет пустых мест на месте невидимого.
+## Voice
 
-## Цвет
+- Short sentences. No exclamation marks, no emoji, no words like "halal", "pious", "sister" or "brother" in the UI.
+- Every wall rule is explained in one line next to where it applies: "Shown to you — you turned on business posts", "Only posts marked for sharing are shown here". On the screen, not in a help centre.
+- The gender question is asked as a question — "Show this post to women?" — with Yes and No and no default.
+- Numbers are honest and sit next to the action: "2,300 of 7,100 followers will see this".
+- Never tell a person that something is hidden from them. No "hidden" counters, no empty slots where the invisible would be.
 
-Система монохромная. Акцентного цвета нет — это решение, а не пробел. Главное действие — `action` (белое в тёмной, чёрное в светлой) с текстом `on-action`. Всё, что относится к стене по полу, красьте в `wall` (псевдоним `action`) и кладите на `action-soft` с рамкой `line-strong`: замок, метку «Бизнес», карточку вопроса. Так стена читается как самый важный элемент экрана без единого цветного пикселя.
+## Colour
 
-Три уровня глубины: `surface` → `card` → `elevated`. Не добавляйте четвёртый. Разделяйте строки `line-soft`, обводите контролы `line`.
+The system is monochrome. There is no accent colour — that is a decision, not a gap. The primary action is `action` (white in dark, black in light) with `on-action` text. Everything that belongs to the gender wall is painted `wall` (an alias of `action`) on `action-soft` inside a `line-strong` frame: the lock, the Business badge, the question card. The wall reads as the most important thing on the screen without a single coloured pixel.
 
-Текст: `ink` для основного, `ink-2` для подписей под фото, `muted` для метаданных и счётчиков. Все три держат ≥ 4.5:1 на `surface` и `card` в обеих темах. Первая тема — тёмная; приложение следует системной теме.
+Three levels of depth: `surface` → `card` → `elevated`. Do not add a fourth. Divide rows with `line-soft`, outline controls with `line`.
 
-Фокус: сплошное кольцо `focus-ring` 2px с зазором 2px цвета `surface`.
+Text: `ink` for primary, `ink-2` for photo captions, `muted` for metadata and counts. All three hold ≥ 4.5:1 on `surface` and `card` in both themes. Dark is the first theme; the app follows the system theme.
 
-## Типографика
+Focus: a solid `focus-ring` 2px with a 2px gap in `surface`.
 
-Одна семья — Manrope с Google Fonts, полная кириллица. Иерархию несёт вес, не размер: `display` 800 только для вопроса о поле, `title` 600 в шапке, `stat` 700 с табличными цифрами. Подпись под фото — `caption` без ника впереди: ник уже в шапке поста. Капитель `eyebrow` с трекингом 0.08em — для метки «Бизнес» и подписей разделов.
+## Typography
 
-## Отступы, скругления, размеры
+One family — Manrope from Google Fonts, full Latin and Cyrillic. Hierarchy comes from weight, not size: `display` 800 only for the gender question, `title` 600 in the header, `stat` 700 with tabular figures. The caption under a photo is `caption` with no handle in front: the handle is already in the post header. The `eyebrow` style with 0.08em tracking is for the Business badge and section labels.
 
-Шаг `space-4` (16) — боковые поля экрана. Карточки отступают от края на `space-3` (12) и держат внутри `space-3`. Фото внутри карточки со скруглением `radius-md`, сама карточка `radius-lg`, кнопки `radius-sm`, чипы и пилюли `radius-pill`. Иконки-кнопки — не меньше `touch` (44).
+## Spacing, radii, sizes
 
-## Иконки
+`space-4` (16) is the screen's side margin. Cards sit `space-3` (12) from the edge and keep `space-3` inside. A photo inside a card uses `radius-md`, the card itself `radius-lg`, buttons `radius-sm`, chips and pills `radius-pill`. Icon buttons are never smaller than `touch` (44).
 
-Свой набор контурных иконок 24×24 со штрихом 1.6 — компонент `Icon` по имени. Запрещённая комбинация: сердце, пузырь и самолётик в ряд под постом. Действия под постом — текстовые пилюли `PostActions`, не иконки.
+## Icons
 
-## Компоненты
+Our own outline set, 24×24, 1.6 stroke — the `Icon` component by name. One combination is forbidden: a heart, a speech bubble and a paper plane in a row under a post. Post actions are text pills (`PostActions`), not icons.
 
-Компоненты — React 18, `window.MSP`. Экраны собираются из них; сам экран — разметка потребителя. `PostCard` принимает фото узлом или стилем фона; `GenderQuestion` — управляемый: `value` и `onChange` даёт потребитель; `TabBar` не хранит состояние. Все кнопки — настоящие `<button>`, иконки-кнопки с `aria-label`.
+## Components
 
-## Чем это не Instagram
+React 18, `window.MSP`. Screens are composed from them; the screen itself is the consumer's markup. `PostCard` takes the photo as a node or a background style; `GenderQuestion` is controlled — `value` and `onChange` come from the consumer; `TabBar` holds no state. Every button is a real `<button>`; icon buttons carry an `aria-label`.
 
-Эти решения — часть системы, не вкус. Не отменяйте их без обсуждения с владельцем продукта.
+## Navigation and publishing principles
 
-- Историй нет: ни кольца, ни highlights, ни просмотрщика.
-- Четыре вкладки и круглая кнопка создания, а не пять вкладок.
-- Короткое видео — режим ленты «Ролики» через `SegmentedControl`, не вкладка «Reels». Слово Reels — товарный знак Meta, в интерфейсе не встречается.
-- Под фото сначала подпись, потом действия текстом со счётчиками.
-- Сетка профиля в две колонки с вертикальными плитками, не три квадрата.
-- Знак — круг, разделённый пополам. Без камеры и градиента.
+These decisions are part of the system, not taste. Do not reverse them without the product owner.
+
+- No stories: no ring, no highlights, no viewer.
+- Four tabs and a round create button, not five tabs.
+- Short video is a feed mode ("Clips") via `SegmentedControl`, not a tab.
+- Under a photo: the caption first, then text actions with counts.
+- Profile grid in two columns with tall tiles, not three squares.
+- The mark is a circle split in half. No camera, no gradient.

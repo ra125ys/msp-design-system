@@ -1,3 +1,3 @@
 # WallNote
 
-Строка с замком объясняет правило стены там, где оно действует. С подложкой `action-soft` и рамкой `line-strong` — на профиле. `bare` — под шапкой кросс-гендерного поста в ленте. Одна строка, без точки, всегда в цвете `wall`.
+The lock line explains a wall rule where it applies. With an `action-soft` background and `line-strong` frame — on a profile. `bare` — under the header of a cross-gender post in the feed. One line, no full stop, always in `wall`.

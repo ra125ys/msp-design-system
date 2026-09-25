@@ -1,3 +1,3 @@
 # ListRow
 
-Строка настройки или композера: иконка, подпись `body`, значение `meta` серым, шеврон. Складываются в `ListRows` на `card` с разделителями `line-soft`. Вся строка — одна кнопка.
+A settings or composer row: icon, `body` label, `meta` value in muted, chevron. Stack them in `ListRows` on `card` with `line-soft` dividers. The whole row is one button.

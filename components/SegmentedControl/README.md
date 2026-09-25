@@ -1,3 +1,3 @@
 # SegmentedControl
 
-Переключатель режима ленты в шапке: «Лента | Ролики». Короткое видео — режим, а не вкладка. Слово Reels в интерфейсе не встречается.
+The feed-mode switch in the header: Feed | Clips. Short video is a mode, not a tab. The word Reels never appears in the interface.

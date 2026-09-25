@@ -13,7 +13,7 @@
   }
   function Mark(p){
     var s = p.size || 28;
-    return h('svg', { className: 'msp-mark', width: s, height: s, viewBox: '0 0 28 28', 'aria-label': 'Знак', role: 'img' },
+    return h('svg', { className: 'msp-mark', width: s, height: s, viewBox: '0 0 28 28', 'aria-label': p.label || 'Mark', role: 'img' },
       h('circle', { cx: 14, cy: 14, r: 12, fill: 'none', stroke: 'currentColor', strokeWidth: 2.2 }),
       h('path', { d: 'M14 2a12 12 0 0 0 0 24z', fill: 'currentColor' }));
   }
@@ -32,7 +32,7 @@
       p.selected ? h(Icon, { name: 'check', size: 13, strokeWidth: 2.2 }) : null, p.children);
   }
   function BusinessBadge(p){
-    return h('span', { className: 'msp-bizbadge' }, h(Icon, { name: 'shield', size: 12, strokeWidth: 2 }), h('span', null, 'Бизнес · ' + (p.category || '')));
+    return h('span', { className: 'msp-bizbadge' }, h(Icon, { name: 'shield', size: 12, strokeWidth: 2 }), h('span', null, (p.prefix || 'Business') + ' · ' + (p.category || '')));
   }
   function WallNote(p){
     return h('div', { className: cx('msp-wallnote', p.bare && 'msp-wallnote--bare', p.className) },
@@ -41,12 +41,12 @@
   function GenderQuestion(p){
     var val = p.value || null, on = p.onChange || function(){};
     return h('section', { className: 'msp-gq', 'aria-labelledby': 'msp-gq-q' },
-      h('div', { className: 'msp-gq__eyebrow' }, h(Icon, { name: 'shield', size: 15, strokeWidth: 2 }), h('span', null, 'Бизнес · ' + (p.category || ''))),
-      h('h2', { id: 'msp-gq-q', className: 'msp-gq__q', style: { margin: 0 } }, p.question || 'Показать этот пост другому полу?'),
+      h('div', { className: 'msp-gq__eyebrow' }, h(Icon, { name: 'shield', size: 15, strokeWidth: 2 }), h('span', null, (p.prefix || 'Business') + ' · ' + (p.category || ''))),
+      h('h2', { id: 'msp-gq-q', className: 'msp-gq__q', style: { margin: 0 } }, p.question || 'Show this post to the other gender?'),
       p.hint ? h('p', { className: 'msp-gq__hint', style: { margin: 0 } }, p.hint) : null,
-      h('div', { className: 'msp-gq__row', role: 'group', 'aria-label': 'Ответ' },
-        h(Button, { size: 'lg', variant: val === 'yes' ? 'primary' : 'ghost', pressed: val === 'yes', onClick: function(){ on('yes'); } }, 'Да'),
-        h(Button, { size: 'lg', variant: val === 'no' ? 'primary' : 'ghost', pressed: val === 'no', onClick: function(){ on('no'); } }, 'Нет')),
+      h('div', { className: 'msp-gq__row', role: 'group', 'aria-label': 'Answer' },
+        h(Button, { size: 'lg', variant: val === 'yes' ? 'primary' : 'ghost', pressed: val === 'yes', onClick: function(){ on('yes'); } }, (p.labels && p.labels.yes) || 'Yes'),
+        h(Button, { size: 'lg', variant: val === 'no' ? 'primary' : 'ghost', pressed: val === 'no', onClick: function(){ on('no'); } }, (p.labels && p.labels.no) || 'No')),
       p.reach ? h('p', { className: 'msp-gq__reach', style: { margin: '12px 0 0' } }, p.reach) : null);
   }
   function Pill(p){
@@ -54,11 +54,12 @@
       p.label, p.count != null ? h('span', { className: 'msp-pill__n' }, String(p.count)) : null);
   }
   function PostActions(p){
-    return h('div', { className: cx('msp-actions', p.className), role: 'group', 'aria-label': 'Действия' },
-      h(Pill, { label: 'Нравится', count: p.likes, onClick: p.onLike, pressed: p.liked }),
-      h(Pill, { label: 'Ответить', count: p.replies, onClick: p.onReply }),
-      h(Pill, { label: 'Отправить', onClick: p.onSend }),
-      h(Pill, { label: 'Сохранить', right: true, onClick: p.onSave, pressed: p.saved }));
+    var L = Object.assign({ like: 'Like', reply: 'Reply', send: 'Send', save: 'Save' }, p.labels || {});
+    return h('div', { className: cx('msp-actions', p.className), role: 'group', 'aria-label': 'Actions' },
+      h(Pill, { label: L.like, count: p.likes, onClick: p.onLike, pressed: p.liked }),
+      h(Pill, { label: L.reply, count: p.replies, onClick: p.onReply }),
+      h(Pill, { label: L.send, onClick: p.onSend }),
+      h(Pill, { label: L.save, right: true, onClick: p.onSave, pressed: p.saved }));
   }
   function SegmentedControl(p){
     var opts = p.options || [], val = p.value, on = p.onChange || function(){};
@@ -66,13 +67,13 @@
       opts.map(function(o){ return h('button', { key: o.id, type: 'button', role: 'tab', 'aria-selected': o.id === val,
         className: cx('msp-seg__opt', o.id === val && 'msp-seg__opt--on'), onClick: function(){ on(o.id); } }, o.label); }));
   }
-  var DEFAULT_TABS = [{ id: 'feed', label: 'Лента', icon: 'home' }, { id: 'search', label: 'Поиск', icon: 'search' }, null,
-                      { id: 'inbox', label: 'Входящие', icon: 'mail' }, { id: 'profile', label: 'Профиль', icon: 'user' }];
+  var DEFAULT_TABS = [{ id: 'feed', label: 'Feed', icon: 'home' }, { id: 'search', label: 'Search', icon: 'search' }, null,
+                      { id: 'inbox', label: 'Inbox', icon: 'mail' }, { id: 'profile', label: 'Profile', icon: 'user' }];
   function TabBar(p){
     var tabs = p.items || DEFAULT_TABS, act = p.active, on = p.onChange || function(){};
-    return h('nav', { className: 'msp-tabbar', 'aria-label': 'Разделы' },
+    return h('nav', { className: 'msp-tabbar', 'aria-label': p.label || 'Sections' },
       tabs.map(function(t, i){
-        if (!t) return h('button', { key: 'create', type: 'button', className: 'msp-tab msp-tab--create', 'aria-label': 'Создать', onClick: p.onCreate },
+        if (!t) return h('button', { key: 'create', type: 'button', className: 'msp-tab msp-tab--create', 'aria-label': p.createLabel || 'Create', onClick: p.onCreate },
           h('span', { className: 'msp-tab__create' }, h(Icon, { name: 'plus', size: 24, strokeWidth: 2.4 })));
         var on_ = t.id === act;
         return h('button', { key: t.id, type: 'button', className: cx('msp-tab', on_ && 'msp-tab--on'), 'aria-current': on_ ? 'page' : undefined, onClick: function(){ on(t.id); } },
@@ -99,11 +100,11 @@
           h('div', { className: 'msp-post__handle' }, p.handle),
           h('div', { className: 'msp-post__meta' }, p.meta),
           p.business ? h('div', { style: { marginTop: 3 } }, h(BusinessBadge, { category: p.business })) : null),
-        h(IconButton, { icon: 'dots', label: 'Ещё', onClick: p.onMore })),
+        h(IconButton, { icon: 'dots', label: p.moreLabel || 'More', onClick: p.onMore })),
       p.wallText ? h(WallNote, { bare: true }, p.wallText) : null,
       p.photo ? h('div', { className: 'msp-post__photo', style: p.photoStyle, role: 'img', 'aria-label': p.photoAlt || '' }, typeof p.photo === 'object' ? p.photo : null) : null,
       h('div', { className: 'msp-post__cap' }, p.caption, p.tags ? h('div', { className: 'msp-post__tags' }, p.tags) : null),
-      h(PostActions, { likes: p.likes, replies: p.replies, onLike: p.onLike, onReply: p.onReply, onSend: p.onSend, onSave: p.onSave }));
+      h(PostActions, { labels: p.labels, likes: p.likes, replies: p.replies, onLike: p.onLike, onReply: p.onReply, onSend: p.onSend, onSave: p.onSave }));
   }
   window.MSP = { Icon: Icon, Mark: Mark, Button: Button, IconButton: IconButton, Chip: Chip, BusinessBadge: BusinessBadge, WallNote: WallNote,
     GenderQuestion: GenderQuestion, PostActions: PostActions, SegmentedControl: SegmentedControl, TabBar: TabBar, ListRow: ListRow, ListRows: ListRows,

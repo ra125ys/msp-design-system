@@ -1,5 +1,5 @@
 # Icon
 
-Свой набор контурных иконок 24×24, штрих 1.6. Цвет берётся из `color` родителя — красьте иконку через текстовый цвет, а не через проп.
+Our own outline icons, 24×24, 1.6 stroke. Colour comes from the parent's `color` — tint an icon through text colour, not a prop.
 
-Что не делать: собирать под постом ряд сердце-пузырь-самолётик — это узнаваемая строка Instagram. Действия под постом — текстовые пилюли.
+Don't: put a heart, a speech bubble and a paper plane in a row under a post — that is Instagram's signature row. Post actions are text pills.
